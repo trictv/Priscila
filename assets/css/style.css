@@ -1,0 +1,264 @@
+/* --- Estilos Globais e Variáveis --- */
+:root {
+    /* Cores padrão - serão sobrescritas pelas configurações do admin via tag <style> no header */
+    --primary-color: #D4AF37; /* Dourado/Mostarda como cor de destaque */
+    --secondary-color: #1a1a1a; /* Preto/Cinza escuro para textos e fundos */
+    --title-color: #1a1a1a;
+    --text-color: #333;
+    --background-color: #ffffff;
+    --light-gray-color: #f8f9fa;
+    --border-color: #e9ecef;
+
+    /* Tipografia */
+    --font-title: 'Montserrat', 'Helvetica Neue', sans-serif;
+    --font-body: 'Lato', 'Helvetica Neue', sans-serif;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--text-color);
+    line-height: 1.7;
+    margin: 0;
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+main {
+    flex-grow: 1; /* Garante que o rodapé fique no final */
+    padding: 40px 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-title);
+    color: var(--title-color);
+    font-weight: 700;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- Cabeçalho --- */
+.main-header {
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--background-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    max-height: 50px;
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 30px;
+}
+
+.main-nav a {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.3s, border-bottom-color 0.3s;
+}
+
+.main-nav a:hover {
+    color: var(--button-color);
+    border-bottom-color: var(--button-color);
+}
+
+/* --- Rodapé --- */
+.main-footer {
+    background-color: var(--secondary-color);
+    color: var(--light-gray-color);
+    padding: 40px 0 20px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.footer-content h4 {
+    color: var(--button-color);
+    font-family: var(--font-title);
+    margin-bottom: 15px;
+}
+
+.footer-nav ul { list-style: none; padding: 0; }
+.footer-nav a, .footer-contact a {
+    color: var(--light-gray-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.footer-nav a:hover, .footer-contact a:hover { color: var(--button-color); }
+.social-icons { display: flex; gap: 15px; }
+.social-icons img { width: 24px; height: 24px; filter: invert(1); }
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #444;
+    font-size: 0.9rem;
+}
+
+/* --- Botões --- */
+.btn-primary, .btn-whatsapp {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: var(--button-color);
+    color: var(--secondary-color);
+    border: 2px solid var(--button-color);
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-primary:hover, .btn-whatsapp:hover {
+    background-color: transparent;
+    color: var(--button-color);
+}
+
+/* --- Grade de Produtos --- */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.product-card {
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+.product-image { position: relative; }
+.product-image img { width: 100%; display: block; }
+.sale-tag {
+    position: absolute;
+    top: 10px; right: 10px;
+    background-color: var(--button-color);
+    color: var(--secondary-color);
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-radius: 3px;
+}
+
+.product-info { padding: 20px; text-align: center; }
+.product-info h3 { font-size: 1.1rem; margin: 0 0 10px; }
+.price-container { font-size: 1.2rem; font-weight: bold; }
+.original-price { text-decoration: line-through; color: #999; font-size: 0.9rem; margin-left: 10px; }
+.sale-price { color: var(--button-color); }
+
+/* --- Página de Detalhes do Produto --- */
+.product-detail-page .product-main-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    margin-bottom: 50px;
+}
+
+.thumbnail-images { display: flex; gap: 10px; margin-top: 10px; }
+.thumbnail { width: 80px; height: 80px; object-fit: cover; cursor: pointer; border: 2px solid var(--border-color); border-radius: 3px; }
+.thumbnail.active, .thumbnail:hover { border-color: var(--button-color); }
+
+.sizes-available .size-tags { display: flex; gap: 10px; }
+.size-tags span {
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.btn-whatsapp { width: 100%; margin-top: 20px; }
+
+/* --- Responsividade --- */
+/* --- Banner Hero / Carrossel --- */
+.hero-banner {
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.banner-carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.banner-slide {
+    min-width: 100%;
+    display: none;
+}
+
+.banner-slide.active {
+    display: block;
+}
+
+.banner-slide img {
+    width: 100%;
+    display: block;
+}
+
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+
+.carousel-nav button {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .main-header .container { flex-direction: column; gap: 15px; }
+    .product-detail-page .product-main-content { grid-template-columns: 1fr; }
+}
